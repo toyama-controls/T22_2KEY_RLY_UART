@@ -1,0 +1,135 @@
+***** 2023/06/10 15:31:38 *****
+QE Version                                        :3.1.0.v20220401-0732
+Project Path                                      :E:\E2STUDIO_PROJECTS\T22_2KEY_RLY_UART
+Configuration File                                :T22_2KEY_RLY_UART
+IDE                                               :e2 studio with Emulator
+Emulator                                          :
+MCU                                               :RX130 R5F51303AxFN
+<< METHOD 0 >>
+[Button(self) 0]
+TS                                                : TS33,
+[Button(self) 1]
+TS                                                : TS34,
+
+<<<< Tuning Type : Normal >>>>
+System Clock Frequency (MHz)                      :32.000
+PCLKB Frequency (MHz)                             :32.000
+CTSU Operating Frequency (MHz)                    :32.000
+Operating Voltage (V)                             :3.300
+
+---------- Phase1 ----------
+<< METHOD 0 >>
+[TS33]
+Count Value                                       : 7588
+Resistance Value (ohm)                            : 220
+Parasitic Capacitance (pF)                        : 18.87925
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+
+[TS34]
+Count Value                                       : 6531
+Resistance Value (ohm)                            : 220
+Parasitic Capacitance (pF)                        : 16.249392
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+
+
+---------- Phase2 ----------
+<< METHOD 0 >>
+[TS33]
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+CTSUSNUM                                          : 3
+CTSUSSDIV                                         : 1
+CTSUSDPA                                          : 7
+CTSUSO                                            : 247
+
+[TS34]
+Sensor Drive Pulse Frequency (MHz)                : 2.0
+CTSUSNUM                                          : 3
+CTSUSSDIV                                         : 1
+CTSUSDPA                                          : 7
+CTSUSO                                            : 196
+
+
+---------- Phase3 ----------
+<< METHOD 0 >>
+[Button(self) 0]
+  << TS33 >>
+  Count Value (Off)                               : 15137
+  Count Value (On)                                : 15966
+  Threshold                                       : 497
+  Hysteresis                                      : 24
+
+[Button(self) 1]
+  << TS34 >>
+  Count Value (Off)                               : 15178
+  Count Value (On)                                : 16168
+  Threshold                                       : 594
+  Hysteresis                                      : 29
+
+
+---------- Phase3 ----------
+<< METHOD 0 >>
+[Button(self) 0]
+  << TS33 >>
+  Count Value (Off)                               : 15014
+  Count Value (On)                                : 16064
+  Threshold                                       : 630
+  Hysteresis                                      : 31
+
+[Button(self) 1]
+  << TS34 >>
+  Count Value (Off)                               : 15501
+  Count Value (On)                                : 15682
+  Threshold                                       : 108
+  Hysteresis                                      : 5
+
+
+---------- Phase3 ----------
+<< METHOD 0 >>
+[Button(self) 0]
+  << TS33 >>
+  Count Value (Off)                               : 15484
+  Count Value (On)                                : 16085
+  Threshold                                       : 360
+  Hysteresis                                      : 18
+
+[Button(self) 1]
+  << TS34 >>
+  Count Value (Off)                               : 15392
+  Count Value (On)                                : 16538
+  Threshold                                       : 687
+  Hysteresis                                      : 34
+
+
+---------- Phase3 ----------
+<< METHOD 0 >>
+[Button(self) 0]
+  << TS33 >>
+  Count Value (Off)                               : 15225
+  Count Value (On)                                : 16169
+  Threshold                                       : 566
+  Hysteresis                                      : 28
+
+[Button(self) 1]
+  << TS34 >>
+  Count Value (Off)                               : 15392
+  Count Value (On)                                : 16538
+  Threshold                                       : 687
+  Hysteresis                                      : 34
+
+
+---------- Phase3 ----------
+<< METHOD 0 >>
+[Button(self) 0]
+  << TS33 >>
+  Count Value (Off)                               : 15088
+  Count Value (On)                                : 16260
+  Threshold                                       : 703
+  Hysteresis                                      : 35
+
+[Button(self) 1]
+  << TS34 >>
+  Count Value (Off)                               : 15308
+  Count Value (On)                                : 16539
+  Threshold                                       : 738
+  Hysteresis                                      : 36
+
