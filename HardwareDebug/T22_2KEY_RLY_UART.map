@@ -1,0 +1,113 @@
+Renesas Optimizing Linker (W3.05.00 )             10-Jun-2023 14:22:52
+
+*** Options ***
+
+-subcommand=LinkerT22_2KEY_RLY_UART.tmp
+-MAKEUD=E:\E2STUDIO_PROJECTS\T22_2KEY_RLY_UART\HardwareDebug/T22_2KEY_RLY_UART_l.ud
+-noprelink
+-input=".\qe_gen\qe_touch_config.obj"
+-input=".\qe_gen\qe_touch_sample.obj"
+-input=".\src\EEPROM.obj"
+-input=".\src\T22_2KEY_RLY_UART.obj"
+-input=".\src\TOUCH_LED.obj"
+-input=".\src\UART.obj"
+-input=".\src/smc_gen/Config_CMT0\Config_CMT0.obj"
+-input=".\src/smc_gen/Config_CMT0\Config_CMT0_user.obj"
+-input=".\src/smc_gen/Config_PORT\Config_PORT.obj"
+-input=".\src/smc_gen/Config_PORT\Config_PORT_user.obj"
+-input=".\src/smc_gen/Config_RIIC0\Config_RIIC0.obj"
+-input=".\src/smc_gen/Config_RIIC0\Config_RIIC0_user.obj"
+-input=".\src/smc_gen/Config_SCI12\Config_SCI12.obj"
+-input=".\src/smc_gen/Config_SCI12\Config_SCI12_user.obj"
+-input=".\src/smc_gen/general\r_cg_hardware_setup.obj"
+-input=".\src/smc_gen/general\r_smc_cgc.obj"
+-input=".\src/smc_gen/general\r_smc_cgc_user.obj"
+-input=".\src/smc_gen/general\r_smc_interrupt.obj"
+-input=".\src/smc_gen/r_bsp/board/generic_rx130\hwsetup.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\dbsct.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\lowlvl.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\lowsrc.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\mcu_locks.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_bsp_common.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_bsp_cpu.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_bsp_interrupts.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_bsp_locking.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_bsp_mcu_startup.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_bsp_software_interrupt.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\r_rx_intrinsic_functions.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\resetprg.obj"
+-input=".\src/smc_gen/r_bsp/mcu/all\sbrk.obj"
+-input=".\src/smc_gen/r_bsp/mcu/rx130\mcu_clocks.obj"
+-input=".\src/smc_gen/r_bsp/mcu/rx130\mcu_init.obj"
+-input=".\src/smc_gen/r_bsp/mcu/rx130\mcu_interrupts.obj"
+-input=".\src/smc_gen/r_bsp/mcu/rx130\vecttbl.obj"
+-input=".\src/smc_gen/r_ctsu_qe/src\r_ctsu_qe.obj"
+-input=".\src/smc_gen/r_pincfg\Pin.obj"
+-input=".\src/smc_gen/r_pincfg\r_ctsu_qe_pinset.obj"
+-input=".\src/smc_gen/rm_touch_qe/src\rm_touch_qe.obj"
+-input=".\src/smc_gen/rm_touch_qe/wrapper\r_touch_wrapper_qe.obj"
+-library=".\T22_2KEY_RLY_UART.lib"
+-start=SU,SI,B_1,R_1,B_2,R_2,B,R/04,PResetPRG,C_1,C_2,C,C$*,D*,W*,L,P/0FFFF0000,FIXEDVECT/0FFFFFF80
+-output="T22_2KEY_RLY_UART.abs"
+-form=absolute
+-nomessage
+-vect=_undefined_interrupt_source_isr
+-list=T22_2KEY_RLY_UART.map
+-nooptimize
+-rom=D=R,D_1=R_1,D_2=R_2
+-cpu=RAM=00000000-000027ff,FIX=00080000-00083fff,FIX=00086000-00087fff,FIX=00088000-0008dfff,FIX=00090000-0009ffff,FIX=000a0000-000bffff,FIX=000c0000-000fffff,ROM=00100000-00101fff,FIX=007fc000-007fc4ff,FIX=007ffc00-007fffff,ROM=ffff0000-ffffffff
+-nologo
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+SU
+                                  00000004  00000403       400   4
+SI
+                                  00000404  00000503       100   4
+B_1
+                                  00000504  000005ca        c7   1
+R_1
+                                  000005cb  0000061c        52   1
+B_2
+                                  0000061e  0000067d        60   2
+R_2
+                                  0000067e  00000681         4   2
+B
+                                  00000684  00000d4f       6cc   4
+R
+                                  00000d50  00000e63       114   4
+PResetPRG
+                                  ffff0000  ffff0053        54   1
+C_1
+                                  ffff0054  ffff0054         0   1
+C_2
+                                  ffff0054  ffff0067        14   2
+C
+                                  ffff0068  ffff01db       174   4
+C$DSEC
+                                  ffff01dc  ffff01ff        24   4
+C$BSEC
+                                  ffff0200  ffff0217        18   4
+C$VECT
+                                  ffff0218  ffff0617       400   4
+D
+                                  ffff0618  ffff072b       114   4
+D_1
+                                  ffff072c  ffff077d        52   1
+D_2
+                                  ffff077e  ffff0781         4   2
+W
+                                  ffff0784  ffff0784         0   4
+W_1
+                                  ffff0784  ffff0793        10   1
+W_2
+                                  ffff0794  ffff0794         0   2
+L
+                                  ffff0794  ffff07d9        46   4
+P
+                                  ffff07da  ffff4f97      47be   1
+FIXEDVECT
+                                  ffffff80  ffffffff        80   4

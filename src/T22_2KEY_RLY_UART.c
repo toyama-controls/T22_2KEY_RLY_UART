@@ -1,0 +1,36 @@
+/***********************************************************************
+*
+*  FILE        : T22_2KEY_RLY_UART.c
+*  DATE        : 2023-06-08
+*  DESCRIPTION : Main Program
+*
+*  NOTE:THIS IS A TYPICAL EXAMPLE.
+*
+***********************************************************************/
+#include "r_smc_entry.h"
+#include "TOUCH_LED.h"
+#include "EEPROM.h"
+#include "UART.h"
+#include "string.h"
+
+extern uint8_t Rx_Buffer[8];
+extern uint8_t RX_Byte[1];
+extern uint8_t Rx_count;
+extern qe_touch_main(void);
+extern uint8_t mili_sec_timer;
+void main(void);
+void main(void)
+{
+
+
+	R_Config_RIIC0_Create();
+	R_Config_RIIC0_Start();
+	EEPROM_READ();
+	EEPROM_LED_POSITION();
+	ENABLE_PIN=0;
+	R_Config_SCI12_Start();
+	R_Config_SCI12_Serial_Receive(&RX_Byte, 1);
+	qe_touch_main();
+
+
+}
