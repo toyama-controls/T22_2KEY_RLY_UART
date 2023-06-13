@@ -12,6 +12,6 @@
 #define SWITCH_ID          0X03
 #define CONTROLCOMMAND 0XC1
 #define CMD_LEN 0X01
-#define COMMAND 0X31
+#define COMMAND 0X41
 extern unsigned char RX_Int,TX_Int;
 #endif /* UART_H_ */

@@ -204,12 +204,12 @@ static void r_Config_SCI12_callback_receiveend(void)
 	Rx_Buffer[Rx_count++]= SCI12.RDR; //RX_Buffer has your main data bytes.
 							if(Rx_count==8)
 								{
-//								memcpy(Rx_Buffer, RX_BUFFER, sizeof(RX_BUFFER));
+
 								Rx_count=0;
-								flag==1;
+
 
 								}
-//							R_Config_CMT0_Start();
+
 							R_Config_SCI12_Serial_Receive(&RX_Byte,1 );
     /* End user code. Do not edit comment generated here */
 }

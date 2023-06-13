@@ -26,58 +26,6 @@ int *p;
 uint8_t data[8];
 uint8_t t1;
 uint8_t t2;
-void handle_receive_data()
-{
-	int y=strlen(Rx_Buffer);
-	t1=Rx_Buffer[0]^Rx_Buffer[1]^Rx_Buffer[2]^Rx_Buffer[3]^Rx_Buffer[4]^Rx_Buffer[5];
-	t2=Rx_Buffer[0]+Rx_Buffer[1]+Rx_Buffer[2]+Rx_Buffer[3]+Rx_Buffer[4]+Rx_Buffer[5]+Rx_Buffer[6];
-
-	if (Rx_Buffer[0] == STX && Rx_Buffer[1] == SWITCH_ID && Rx_Buffer[3] == COMMAND && Rx_Buffer[4] == CMD_LEN && Rx_Buffer[6] == t1 && Rx_Buffer[7] == t2)
-	{
-		FLAG=1;
-		if (Rx_Buffer[2] == SUB_ID + 1 && Rx_Buffer[5] == 01 && count1==0)
-	    {
-				count1 = 1;
-				key11 = 1;
-				key12 = 0;
-				EEPROM_WRITE(key12);
-				memset(Rx_Buffer,0,sizeof(Rx_Buffer));
-	    }
-	    else if (Rx_Buffer[2] == SUB_ID + 1 && Rx_Buffer[5] == 00 && count1==1)
-	    {
-	        count1 = 0;
-	        key11 = 0;
-	        key12 = 1;
-	        EEPROM_WRITE(key12);
-	        memset(Rx_Buffer,0,sizeof(Rx_Buffer));
-	    }
-	    else if (Rx_Buffer[2] == SUB_ID && Rx_Buffer[5] == 01 && count2==0)
-	    {
-	        count2 = 1;
-	        key21 = 1;
-	        key22 = 0;
-	        EEPROM_WRITE(key22);
-	        memset(Rx_Buffer,0,sizeof(Rx_Buffer));
-	    }
-	    else if (Rx_Buffer[2] == SUB_ID && Rx_Buffer[5] == 00 && count2==1)
-	    {
-	        count2 = 0;
-	        key21 = 0;
-	        key22 = 1;
-	        EEPROM_WRITE(key22);
-	        memset(Rx_Buffer,0,sizeof(Rx_Buffer));
-	    }
-
-
-
-
-	}
-if(Rx_Buffer[0]!=247)
-{
-	memset(Rx_Buffer,9,sizeof(Rx_Buffer));
-	Rx_count=0;
-}
-}
 void send_data(SUB_ID,CMD)
 {
  	data[0]=STX;
@@ -94,5 +42,71 @@ void send_data(SUB_ID,CMD)
  	TX_Int = 0;
  	ENABLE_PIN=0;
 }
+void handle_receive_data()
+{
+
+	t1=Rx_Buffer[0]^Rx_Buffer[1]^Rx_Buffer[2]^Rx_Buffer[3]^Rx_Buffer[4]^Rx_Buffer[5];
+	t2=Rx_Buffer[0]+Rx_Buffer[1]+Rx_Buffer[2]+Rx_Buffer[3]+Rx_Buffer[4]+Rx_Buffer[5]+Rx_Buffer[6];
+
+	if (Rx_Buffer[0] == STX && Rx_Buffer[1] == SWITCH_ID && Rx_Buffer[3] == COMMAND && Rx_Buffer[4] == CMD_LEN && Rx_Buffer[6] == t1 && Rx_Buffer[7] == t2)
+	{
+
+		if (Rx_Buffer[2] == SUB_ID + 1 && Rx_Buffer[5] == 01 && count1==0)
+	    {
+
+
+			send_data(SUB_ID+1,01);
+				count1 =1;
+				key11 = 1;
+				key12 = 0;
+				EEPROM_WRITE(key12);
+
+
+	    }
+	    else if (Rx_Buffer[2] == SUB_ID + 1 && Rx_Buffer[5] == 00 && count1==1)
+	    {
+
+	    	send_data(SUB_ID+1,00);
+	        count1 = 0;
+	        key11 = 0;
+	        key12 = 1;
+	        EEPROM_WRITE(key12);
+
+
+	    }
+	    else if (Rx_Buffer[2] == SUB_ID && Rx_Buffer[5] == 01 && count2==0)
+	    {
+
+	    	send_data(SUB_ID,01);
+	        count2 = 1;
+	        key21 = 1;
+	        key22 = 0;
+	        EEPROM_WRITE(key22);
+
+
+	    }
+	    else if (Rx_Buffer[2] == SUB_ID && Rx_Buffer[5] == 00 && count2==1)
+	    {
+
+	    	send_data(SUB_ID,00);
+	        count2 = 0;
+	        key21 = 0;
+	        key22 = 1;
+	        EEPROM_WRITE(key22);
+
+
+	    }
+
+
+
+
+	}
+if(Rx_Buffer[0]!=247)
+{
+	memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+	Rx_count=0;
+}
+}
+
 
 

@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.05.00 )             12-Jun-2023 11:30:45
+Renesas Optimizing Linker (W3.05.00 )             13-Jun-2023 15:12:11
 
 *** Options ***
 
@@ -108,6 +108,6 @@ W_2
 L
                                   ffff0794  ffff07d9        46   4
 P
-                                  ffff07da  ffff4f97      47be   1
+                                  ffff07da  ffff4f82      47a9   1
 FIXEDVECT
                                   ffffff80  ffffffff        80   4
