@@ -12,7 +12,7 @@
 #include "r_sci_rx_pinset.h"
 #endif
 #define TOUCH_SCAN_INTERVAL_EXAMPLE (20)    /* milliseconds */
-
+extern uint8_t Rx_Buffer[8];
 void R_CTSU_PinSetInit(void);
 void qe_touch_main(void);
 
@@ -104,7 +104,9 @@ void qe_touch_main(void)
         err = RM_TOUCH_DataGet (g_qe_touch_instance_config01.p_ctrl, &button_status, NULL, NULL);
         if (FSP_SUCCESS == err)
         {
+
         	handle_receive_data();
+
         	LED_FUNCTION(button_status);
             /* TODO: Add your own code here. */
         }

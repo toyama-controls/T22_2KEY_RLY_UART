@@ -10,6 +10,8 @@
 #include "UART.h"
 extern uint8_t SUB_ID=17;
 extern uint8_t WRITE_BUFFER[14];
+int flag1;
+int flag2;
 int key1_ledstate=0;
 int key2_ledstate=0;
 int key3_ledstate=0;
@@ -18,16 +20,18 @@ int LED_FUNCTION(int STATUS)
 {
 	if(key1_ledstate==0 && STATUS==1)
 	{
+
 		key21=~key21;
 		key22=~key22;
 		key1_ledstate=1;
-		RELAY1=~RELAY1;
+		RELAY3=~RELAY3;
 
 		EEPROM_WRITE(key21);
 		send_data(SUB_ID,key21);
 	}
 	else if(key1_ledstate==1 && STATUS==0)
 	{
+		flag1=0;
 		key1_ledstate=0;
 	}
 	if(key2_ledstate==0 && STATUS==2)
@@ -35,13 +39,14 @@ int LED_FUNCTION(int STATUS)
 		key11=~key11;
 		key12=~key12;
 		key2_ledstate=1;
-		RELAY2=~RELAY2;
+		RELAY3=~RELAY3;
 
 		EEPROM_WRITE(key11);
 		send_data(SUB_ID+1,key11);
 	}
 	else if(key2_ledstate==1 && STATUS==0)
 	{
+
 		key2_ledstate=0;
 	}
 	return 0;

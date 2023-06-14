@@ -18,10 +18,10 @@
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
-* File Name        : Config_PORT.c
-* Component Version: 2.4.1
+* File Name        : r_cg_hardware_setup.c
+* Version          : 1.1.110
 * Device(s)        : R5F51303AxFN
-* Description      : This file implements device driver for Config_PORT.
+* Description      : Initialization file for code generation configurations.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -35,6 +35,11 @@ Includes
 ***********************************************************************************************************************/
 #include "r_cg_macrodriver.h"
 #include "Config_PORT.h"
+#include "Config_SCI12.h"
+#include "Config_RIIC0.h"
+#include "Config_CMT0.h"
+#include "r_smc_cgc.h"
+#include "r_smc_interrupt.h"
 /* Start user code for include. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
@@ -46,41 +51,57 @@ Global variables and functions
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
-* Function Name: R_Config_PORT_Create
-* Description  : This function initializes the PORT
+* Function Name: r_undefined_exception
+* Description  : This function is undefined interrupt service routine
 * Arguments    : None
 * Return Value : None
 ***********************************************************************************************************************/
 
-void R_Config_PORT_Create(void)
+void r_undefined_exception(void)
 {
-    /* Set PORT0 registers */
-    PORT0.PODR.BYTE = _00_Pm3_OUTPUT_0 | _00_Pm4_OUTPUT_0 | _00_Pm6_OUTPUT_0;
-    PORT0.PMR.BYTE = _00_Pm3_PIN_GPIO | _00_Pm4_PIN_GPIO | _00_Pm6_PIN_GPIO;
-    PORT0.PDR.BYTE = _08_Pm3_MODE_OUTPUT | _10_Pm4_MODE_OUTPUT | _40_Pm6_MODE_OUTPUT | _07_PDR0_DEFAULT;
+    /* Start user code for r_undefined_exception. Do not edit comment generated here */
+    /* End user code. Do not edit comment generated here */
+}
 
-    /* Set PORT1 registers */
-    PORT1.PODR.BYTE = _00_Pm2_OUTPUT_0 | _00_Pm3_OUTPUT_0;
-    PORT1.ODR0.BYTE = _00_Pm2_CMOS_OUTPUT | _00_Pm3_CMOS_OUTPUT;
-    PORT1.ODR1.BYTE = _00_Pm4_CMOS_OUTPUT | _00_Pm5_CMOS_OUTPUT | _00_Pm6_CMOS_OUTPUT | _00_Pm7_CMOS_OUTPUT;
-    PORT1.DSCR.BYTE = _00_Pm2_HIDRV_OFF | _00_Pm3_HIDRV_OFF;
-    PORT1.PMR.BYTE = _00_Pm2_PIN_GPIO | _00_Pm3_PIN_GPIO;
-    PORT1.PDR.BYTE = _04_Pm2_MODE_OUTPUT | _08_Pm3_MODE_OUTPUT | _03_PDR1_DEFAULT;
+/***********************************************************************************************************************
+* Function Name: R_Systeminit
+* Description  : This function initializes every configuration
+* Arguments    : None
+* Return Value : None
+***********************************************************************************************************************/
 
-    /* Set PORT5 registers */
-    PORT5.PODR.BYTE = _00_Pm5_OUTPUT_0;
-    PORT5.DSCR.BYTE = _00_Pm5_HIDRV_OFF;
-    PORT5.PMR.BYTE = _00_Pm5_PIN_GPIO;
-    PORT5.PDR.BYTE = _20_Pm5_MODE_OUTPUT | _CF_PDR5_DEFAULT;
+void R_Systeminit(void)
+{
+    /* Enable writing to registers related to operating modes, LPC, CGC and software reset */
+    SYSTEM.PRCR.WORD = 0xA50FU;
 
-    /* Set PORTH registers */
-    PORTH.PODR.BYTE = _00_Pm0_OUTPUT_0;
-    PORTH.DSCR.BYTE = _00_Pm0_HIDRV_OFF;
-    PORTH.PMR.BYTE = _00_Pm0_PIN_GPIO;
-    PORTH.PDR.BYTE = _01_Pm0_MODE_OUTPUT | _F0_PDRH_DEFAULT;
+    /* Enable writing to MPC pin function control registers */
+    MPC.PWPR.BIT.B0WI = 0U;
+    MPC.PWPR.BIT.PFSWE = 1U;
 
-    R_Config_PORT_Create_UserInit();
+    /* Write 0 to the target bits in the POECR2 registers */
+    POE.POECR2.BYTE = 0x00U;
+
+    /* Initialize clocks settings */
+    R_CGC_Create();
+
+    /* Set peripheral settings */
+    R_Config_PORT_Create();
+    R_Config_SCI12_Create();
+    R_Config_RIIC0_Create();
+    R_Config_CMT0_Create();
+
+    /* Register undefined interrupt */
+    R_BSP_InterruptWrite(BSP_INT_SRC_UNDEFINED_INTERRUPT,(bsp_int_cb_t)r_undefined_exception);
+
+    /* Disable writing to MPC pin function control registers */
+    MPC.PWPR.BIT.PFSWE = 0U;
+    MPC.PWPR.BIT.B0WI = 1U;
+
+    /* Enable protection */
+    SYSTEM.PRCR.WORD = 0xA500U;
 }
 
 /* Start user code for adding. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
+

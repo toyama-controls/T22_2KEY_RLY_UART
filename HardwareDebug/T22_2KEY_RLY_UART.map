@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W3.05.00 )             13-Jun-2023 15:12:11
+Renesas Optimizing Linker (W3.05.00 )             14-Jun-2023 19:33:55
 
 *** Options ***
 
@@ -76,9 +76,9 @@ B_2
 R_2
                                   0000067e  00000681         4   2
 B
-                                  00000684  00000d4f       6cc   4
+                                  00000684  00000d57       6d4   4
 R
-                                  00000d50  00000e63       114   4
+                                  00000d58  00000e6b       114   4
 PResetPRG
                                   ffff0000  ffff0053        54   1
 C_1
@@ -108,6 +108,6 @@ W_2
 L
                                   ffff0794  ffff07d9        46   4
 P
-                                  ffff07da  ffff4f82      47a9   1
+                                  ffff07da  ffff4fbd      47e4   1
 FIXEDVECT
                                   ffffff80  ffffffff        80   4
