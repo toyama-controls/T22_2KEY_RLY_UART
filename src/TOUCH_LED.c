@@ -24,10 +24,10 @@ int LED_FUNCTION(int STATUS)
 		key21=~key21;
 		key22=~key22;
 		key1_ledstate=1;
-		RELAY3=~RELAY3;
+		RELAY1=~RELAY1;
 
 		EEPROM_WRITE(key21);
-		send_data(SUB_ID,key21);
+		send_data(SUB_ID,key22);
 	}
 	else if(key1_ledstate==1 && STATUS==0)
 	{
@@ -42,7 +42,7 @@ int LED_FUNCTION(int STATUS)
 		RELAY3=~RELAY3;
 
 		EEPROM_WRITE(key11);
-		send_data(SUB_ID+1,key11);
+		send_data(SUB_ID+1,key12);
 	}
 	else if(key2_ledstate==1 && STATUS==0)
 	{

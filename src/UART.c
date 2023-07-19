@@ -58,11 +58,19 @@ if(key11==0)
 {
 			send_data(SUB_ID+1,01);
 				count1 =1;
-				key11 = 1;
-				key12 = 0;
+				key11 = ~key11;
+				key12 = ~key12;
 				RELAY1=1;
 				memset(Rx_Buffer,9,sizeof(Rx_Buffer));
 				EEPROM_WRITE(key12);
+}
+if(key11==1)
+{
+	memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+	key11=key11;
+	key12=key12;
+	RELAY1=1;
+
 }
 
 	    }
@@ -73,11 +81,19 @@ if(key11==0)
 
 	    	send_data(SUB_ID+1,00);
 	        count1 = 0;
-	        key11 = 0;
-	        key12 = 1;
+	        key11 = ~key11;
+	        key12 = ~key12;
 	        RELAY1=0;
 	        memset(Rx_Buffer,9,sizeof(Rx_Buffer));
 	        EEPROM_WRITE(key12);
+	    	}
+	    	if(key11==0)
+	    	{
+	    		memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+	    		key11=key11;
+	    		key12=key12;
+	    		RELAY1=0;
+
 	    	}
 
 	    }
@@ -87,12 +103,20 @@ if(key11==0)
 	    	{
 	    	send_data(SUB_ID,01);
 	        count2 = 1;
-	        key21 = 1;
-	        key22 = 0;
+	        key21 = ~key21;
+	        key22 = ~key22;
 	        RELAY3=1;
 	        memset(Rx_Buffer,9,sizeof(Rx_Buffer));
 	        EEPROM_WRITE(key22);
 	    	}
+	    	if(key21==1)
+	    		    	{
+	    		memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+	    		    		key21=key21;
+	    		    		key22=key22;
+	    		    		RELAY3=1;
+
+	    		    	}
 
 	    }
 	    else if (Rx_Buffer[2] == SUB_ID && Rx_Buffer[5] == 00 )
@@ -101,13 +125,21 @@ if(key21==1)
 {
 	    	send_data(SUB_ID,00);
 	        count2 = 0;
-	        key21 = 0;
-	        key22 = 1;
+	        key21 = ~key21;
+	        key22 = ~key22;
 	        RELAY3=0;
 	        memset(Rx_Buffer,9,sizeof(Rx_Buffer));
 	        EEPROM_WRITE(key22);
 
 }
+if(key21==0)
+	    		    	{
+	memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+	    		    		key21=key21;
+	    		    		key22=key22;
+	    		    		RELAY3=0;
+
+	    		    	}
 	    }
 
 

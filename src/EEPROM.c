@@ -54,25 +54,25 @@ EEPROM_LED_POSITION()
 	{
 		key11=1;
 		key12=0;
-		RELAY1=1;
+		RELAY3=0;
 	}
 	else if(READ_BUFFER[0]==0)
 	{
 		key11=0;
 		key12=1;
-		RELAY1=0;
+		RELAY3=1;
 	}
 	if(READ_BUFFER[2]==1)
 	{
 		key21=1;
 		key22=0;
-		RELAY2=1;
+		RELAY1=0;
 	}
 	else if(READ_BUFFER[2]==0)
 	{
 		key21=0;
 		key22=1;
-		RELAY2=0;
+		RELAY1=1;
 	}
 
 
