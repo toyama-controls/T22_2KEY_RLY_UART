@@ -26,6 +26,37 @@ int *p;
 uint8_t data[8];
 uint8_t t1;
 uint8_t t2;
+int count1;
+int count2;
+uint8_t count3;
+uint8_t count4;
+uint8_t count5;
+uint8_t STATUS[16];
+int RELAY_STATUS(uint8_t c1,uint8_t c2,uint8_t c3,uint8_t c4)
+{
+	STATUS[0]=0XF7;
+	STATUS[1]=0X03;
+	STATUS[2]=0X10;
+	STATUS[3]=0X81;
+	STATUS[4]=0X09;
+	STATUS[5]=c1;
+	STATUS[6]=c2;
+	STATUS[7]=c3;
+	STATUS[8]=c4;
+	STATUS[9]=0X00;
+	STATUS[10]=0X00;
+	STATUS[11]=0X00;
+	STATUS[12]=0X00;
+	STATUS[13]=0X00;
+	STATUS[14]=STATUS[0]^STATUS[1]^STATUS[2]^STATUS[3]^STATUS[4]^STATUS[5]^STATUS[6]^STATUS[7]^STATUS[8];
+	STATUS[15]=STATUS[0]+STATUS[1]+STATUS[2]+STATUS[3]+STATUS[4]+STATUS[5]+STATUS[6]+STATUS[7]+STATUS[8]+STATUS[9]+STATUS[10]+STATUS[11]+STATUS[12]+STATUS[13]+STATUS[14];
+	ENABLE_PIN=1;
+	R_Config_SCI12_Serial_Send(STATUS,sizeof(STATUS));
+	while(TX_Int == 0);
+	TX_Int = 0;
+	ENABLE_PIN=0;
+	return 0;
+}
 void send_data(SUB_ID,CMD)
 {
  	data[0]=STX;
@@ -51,47 +82,51 @@ void handle_receive_data()
 	if (Rx_Buffer[0] == STX && Rx_Buffer[1] == SWITCH_ID && Rx_Buffer[3] == COMMAND && Rx_Buffer[4] == CMD_LEN && Rx_Buffer[6] == t1 && Rx_Buffer[7] == t2)
 	{
 
-		if (Rx_Buffer[2] == SUB_ID + 1 && Rx_Buffer[5] == 01)
+
+		if (Rx_Buffer[2] == SUB_ID + 2 && Rx_Buffer[5] == 01)
 	    {
 
 if(key12==0)
 {
-			send_data(SUB_ID+1,01);
+//
 				count1 =1;
 				key11 = 0;
 				key12 = 1;
 				RELAY3=1;
-				memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+				send_data(SUB_ID+2,01);
 				EEPROM_WRITE(key12);
+				memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 }
 if (key12==1)
 		{
-	memset(Rx_Buffer,9,sizeof(Rx_Buffer));
-	key11 = 0;
+
+					key11 = 0;
 					key12 = 1;
 					RELAY3=1;
+					memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 		}
 
 	    }
-	    else if (Rx_Buffer[2] == SUB_ID + 1 && Rx_Buffer[5] == 00 )
+	    else if (Rx_Buffer[2] == SUB_ID + 2 && Rx_Buffer[5] == 00 )
 	    {
 	    	if(key12==1)
 	    	{
 
-	    	send_data(SUB_ID+1,00);
+	    	send_data(SUB_ID+2,00);
 	        count1 = 0;
 	        key11 = 1;
 	        key12 = 0;
 	        RELAY3=0;
-	        memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+
 	        EEPROM_WRITE(key12);
+	        memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 	    	}
 	    	if (key12==0)
 	    			{
-	    		memset(Rx_Buffer,9,sizeof(Rx_Buffer));
 	    		key11 = 1;
-	    						key12 = 0;
-	    						RELAY3=0;
+	    		key12 = 0;
+	    		RELAY3=0;
+	    		memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 	    			}
 
 	    }
@@ -104,15 +139,17 @@ if (key12==1)
 	        key21 = 0;
 	        key22 = 1;
 	        RELAY1=1;
-	        memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+
 	        EEPROM_WRITE(key22);
+	        memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 	    	}
 	    	if(key22==1)
 	    	{
-	    		memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+
 	    		key21 = 0;
 	    		key22 = 1;
 	   	        RELAY1=1;
+	   	     memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 	    	}
 
 	    }
@@ -125,16 +162,18 @@ if(key22==1)
 	        key21 = 1;
 	        key22 = 0;
 	        RELAY1=0;
-	        memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+
 	        EEPROM_WRITE(key22);
+	        memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 
 }
 if(key22==0)
 	    	{
-	memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+
 	    		key21 = 1;
 	    		key22 = 0;
 	   	        RELAY1=0;
+	   	     memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 	    	}
 	    }
 
@@ -142,9 +181,58 @@ if(key22==0)
 
 
 	}
+	else if(Rx_Buffer[0]==STX && Rx_Buffer[1]==SWITCH_ID && Rx_Buffer[2]==240 && Rx_Buffer[3]==01 && Rx_Buffer[4]==00 && Rx_Buffer[5]==05 && Rx_Buffer[6]==240)
+			{
+				if(RELAY1==0 && RELAY3==0)
+				{
+					count5=0;
+				}
+				else if(RELAY1==1 && RELAY3==1)
+						{
+							count5=1;
+						}
+				if(RELAY3==1)
+				{
+					count1=1;;
+
+				}
+				else
+				{
+					count1=0;
+				}
+				if(RELAY1==1)
+				{
+					count2=1;
+				}
+				else
+						{
+							count2=0;
+						}
+//				if(RELAY2==1)
+//				{
+//					count3=1;
+//				}
+//				else
+//						{
+//							count3=0;
+//						}
+//				if(RELAY4==1)
+//				{
+//					count4=1;
+//				}
+//				else
+//						{
+//							count4=0;
+//						}
+
+				RELAY_STATUS(count1,count2,count3,count4);
+				memset(Rx_Buffer,0,sizeof(Rx_Buffer));
+			}
+
+
 if(Rx_Buffer[0]!=247)
 {
-	memset(Rx_Buffer,9,sizeof(Rx_Buffer));
+	memset(Rx_Buffer,0,sizeof(Rx_Buffer));
 	Rx_count=0;
 }
 }
