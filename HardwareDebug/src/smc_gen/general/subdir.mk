@@ -22,7 +22,7 @@ src/smc_gen/general/r_smc_cgc_user.d \
 src/smc_gen/general/r_smc_interrupt.d 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/smc_gen/general/%.obj: ../src/smc_gen/general/%.c 
+src/smc_gen/general/%.obj: ../src/smc_gen/general/%.c src/smc_gen/general/Compiler.sub
 	@echo 'Scanning and building file: $<'
 	@echo 'Invoking: Scanner and Compiler'
 	@echo src\smc_gen\general\cDepSubCommand.tmp=

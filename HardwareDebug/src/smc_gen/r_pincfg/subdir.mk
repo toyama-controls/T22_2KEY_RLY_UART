@@ -16,7 +16,7 @@ src/smc_gen/r_pincfg/Pin.d \
 src/smc_gen/r_pincfg/r_ctsu_qe_pinset.d 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/smc_gen/r_pincfg/%.obj: ../src/smc_gen/r_pincfg/%.c 
+src/smc_gen/r_pincfg/%.obj: ../src/smc_gen/r_pincfg/%.c src/smc_gen/r_pincfg/Compiler.sub
 	@echo 'Scanning and building file: $<'
 	@echo 'Invoking: Scanner and Compiler'
 	@echo src\smc_gen\r_pincfg\cDepSubCommand.tmp=

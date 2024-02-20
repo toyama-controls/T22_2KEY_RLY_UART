@@ -1,9 +1,9 @@
-Renesas Optimizing Linker (W3.05.00 )             23-Sep-2023 15:01:13
+Renesas Optimizing Linker (W3.05.00 )             13-Feb-2024 16:12:11
 
 *** Options ***
 
 -subcommand=LinkerT22_2KEY_RLY_UART.tmp
--MAKEUD=E:\E2STUDIO_PROJECTS\T22_2KEY_RLY_UART\HardwareDebug/T22_2KEY_RLY_UART_l.ud
+-MAKEUD=C:\E2STUDIO_PROJECTS\T22_2KEY_RLY_UART\HardwareDebug/T22_2KEY_RLY_UART_l.ud
 -noprelink
 -input=".\qe_gen\qe_touch_config.obj"
 -input=".\qe_gen\qe_touch_sample.obj"
@@ -108,6 +108,6 @@ W_2
 L
                                   ffff0794  ffff07d9        46   4
 P
-                                  ffff07da  ffff533f      4b66   1
+                                  ffff07da  ffff530a      4b31   1
 FIXEDVECT
                                   ffffff80  ffffffff        80   4

@@ -16,7 +16,7 @@ qe_gen/qe_touch_config.d \
 qe_gen/qe_touch_sample.d 
 
 # Each subdirectory must supply rules for building sources it contributes
-qe_gen/%.obj: ../qe_gen/%.c 
+qe_gen/%.obj: ../qe_gen/%.c qe_gen/Compiler.sub
 	@echo 'Scanning and building file: $<'
 	@echo 'Invoking: Scanner and Compiler'
 	@echo qe_gen\cDepSubCommand.tmp=

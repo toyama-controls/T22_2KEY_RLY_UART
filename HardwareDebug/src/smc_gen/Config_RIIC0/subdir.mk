@@ -16,7 +16,7 @@ src/smc_gen/Config_RIIC0/Config_RIIC0.d \
 src/smc_gen/Config_RIIC0/Config_RIIC0_user.d 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/smc_gen/Config_RIIC0/%.obj: ../src/smc_gen/Config_RIIC0/%.c 
+src/smc_gen/Config_RIIC0/%.obj: ../src/smc_gen/Config_RIIC0/%.c src/smc_gen/Config_RIIC0/Compiler.sub
 	@echo 'Scanning and building file: $<'
 	@echo 'Invoking: Scanner and Compiler'
 	@echo src\smc_gen\Config_RIIC0\cDepSubCommand.tmp=

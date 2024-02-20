@@ -16,7 +16,7 @@ src/smc_gen/Config_SCI12/Config_SCI12.d \
 src/smc_gen/Config_SCI12/Config_SCI12_user.d 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/smc_gen/Config_SCI12/%.obj: ../src/smc_gen/Config_SCI12/%.c 
+src/smc_gen/Config_SCI12/%.obj: ../src/smc_gen/Config_SCI12/%.c src/smc_gen/Config_SCI12/Compiler.sub
 	@echo 'Scanning and building file: $<'
 	@echo 'Invoking: Scanner and Compiler'
 	@echo src\smc_gen\Config_SCI12\cDepSubCommand.tmp=

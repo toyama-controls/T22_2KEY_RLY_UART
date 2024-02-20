@@ -61,8 +61,8 @@ CTSU Related Information for [CONFIG01] configuration.
 
 const ctsu_element_cfg_t g_qe_ctsu_element_cfg_config01[] =
 {
-    { .ssdiv = CTSU_SSDIV_2000, .so = 0x0F5, .snum = 0x03, .sdpa = 0x07 },
-    { .ssdiv = CTSU_SSDIV_2000, .so = 0x0C1, .snum = 0x03, .sdpa = 0x07 },
+    { .ssdiv = CTSU_SSDIV_2000, .so = 0x0E7, .snum = 0x03, .sdpa = 0x07 },
+    { .ssdiv = CTSU_SSDIV_2000, .so = 0x0AD, .snum = 0x03, .sdpa = 0x07 },
 };
 
 const ctsu_cfg_t g_qe_ctsu_cfg_config01 =
@@ -125,14 +125,14 @@ const touch_button_cfg_t g_qe_touch_button_cfg_config01[] =
     /* button00 */
     {
         .elem_index = 0,
-        .threshold  = 330,
-        .hysteresis = 49,
+        .threshold  = 450,
+        .hysteresis = 50,
     },
     /* button01 */
     {
         .elem_index = 1,
-        .threshold  = 350,
-        .hysteresis = 41,
+        .threshold  = 480,
+        .hysteresis = 42,
     },
 };
 #endif

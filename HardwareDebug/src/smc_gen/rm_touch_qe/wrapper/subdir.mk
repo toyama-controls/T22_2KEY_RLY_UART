@@ -13,7 +13,7 @@ C_DEPS += \
 src/smc_gen/rm_touch_qe/wrapper/r_touch_wrapper_qe.d 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/smc_gen/rm_touch_qe/wrapper/%.obj: ../src/smc_gen/rm_touch_qe/wrapper/%.c 
+src/smc_gen/rm_touch_qe/wrapper/%.obj: ../src/smc_gen/rm_touch_qe/wrapper/%.c src/smc_gen/rm_touch_qe/wrapper/Compiler.sub
 	@echo 'Scanning and building file: $<'
 	@echo 'Invoking: Scanner and Compiler'
 	@echo src\smc_gen\rm_touch_qe\wrapper\cDepSubCommand.tmp=

@@ -22,7 +22,7 @@ src/TOUCH_LED.d \
 src/UART.d 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/%.obj: ../src/%.c 
+src/%.obj: ../src/%.c src/Compiler.sub
 	@echo 'Scanning and building file: $<'
 	@echo 'Invoking: Scanner and Compiler'
 	@echo src\cDepSubCommand.tmp=

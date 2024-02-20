@@ -11,7 +11,7 @@
 #if ((TOUCH_CFG_UART_MONITOR_SUPPORT == 1) || (TOUCH_CFG_UART_TUNING_SUPPORT == 1))
 #include "r_sci_rx_pinset.h"
 #endif
-#define TOUCH_SCAN_INTERVAL_EXAMPLE (20)    /* milliseconds */
+#define TOUCH_SCAN_INTERVAL_EXAMPLE (2)    /* milliseconds */
 extern uint8_t Rx_Buffer[8];
 void R_CTSU_PinSetInit(void);
 void qe_touch_main(void);

@@ -49,7 +49,7 @@ src/smc_gen/r_bsp/mcu/all/resetprg.d \
 src/smc_gen/r_bsp/mcu/all/sbrk.d 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/smc_gen/r_bsp/mcu/all/%.obj: ../src/smc_gen/r_bsp/mcu/all/%.c 
+src/smc_gen/r_bsp/mcu/all/%.obj: ../src/smc_gen/r_bsp/mcu/all/%.c src/smc_gen/r_bsp/mcu/all/Compiler.sub
 	@echo 'Scanning and building file: $<'
 	@echo 'Invoking: Scanner and Compiler'
 	@echo src\smc_gen\r_bsp\mcu\all\cDepSubCommand.tmp=

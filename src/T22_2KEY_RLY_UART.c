@@ -22,9 +22,9 @@ void main(void);
 void main(void)
 {
 	key11=1;
-		key12=0;
-		key21=1;
-		key22=0;
+	key12=0;
+	key21=1;
+	key22=0;
 
 	R_Config_RIIC0_Create();
 	R_Config_RIIC0_Start();
@@ -32,11 +32,11 @@ void main(void)
 	EEPROM_LED_POSITION();
 
 	ENABLE_PIN=0;
-	R_BSP_SoftwareDelay(3,BSP_DELAY_SECS);
-		send_data(17,RELAY1);
-
-		R_BSP_SoftwareDelay(3,BSP_DELAY_SECS);
-		send_data(19,RELAY3);
+//	R_BSP_SoftwareDelay(3,BSP_DELAY_SECS);
+//		send_data(17,RELAY1);
+//
+//		R_BSP_SoftwareDelay(3,BSP_DELAY_SECS);
+//		send_data(19,RELAY3);
 	R_Config_SCI12_Start();
 	R_Config_SCI12_Serial_Receive(&RX_Byte, 1);
 	qe_touch_main();

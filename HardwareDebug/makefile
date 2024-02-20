@@ -133,7 +133,7 @@ T22_2KEY_RLY_UART.lib:
 	@echo ''
 
 T22_2KEY_RLY_UART.x: T22_2KEY_RLY_UART.abs
-		-C:\Users\aishw\.eclipse\com.renesas.platform_1901882494\Utilities\\ccrx\renesas_cc_converter T22_2KEY_RLY_UART.abs T22_2KEY_RLY_UART.x
+		-C:\Users\Aishwarya\.eclipse\com.renesas.platform_26289591\Utilities\\ccrx\renesas_cc_converter T22_2KEY_RLY_UART.abs T22_2KEY_RLY_UART.x
 
 T22_2KEY_RLY_UART.udm: $(LINKER_OUTPUT_OUTPUTS) $(CONVERTOR_OUTPUT_OUTPUTS)
 	udcollector -subcommand=udSubcommand.tmp -output=T22_2KEY_RLY_UART.udm
@@ -183,5 +183,5 @@ endif
 	@echo ''
 	@echo 'Clean complete.'
 
-.PHONY: all clean  
+.PHONY: all clean  $(LINKER_OUTPUT_OUTPUTS)  $(LIBRARY_GENERATOR_OUTPUTTYPE_OUTPUTS)  
 -include ../makefile.targets

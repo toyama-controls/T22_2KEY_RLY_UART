@@ -52,6 +52,7 @@ uint8_t RX_Byte[8];
 uint8_t Rx_Buffer[8];
 uint8_t RX_BUFFER[8];
 uint8_t Rx_count;
+extern int flag=0;
 extern uint8_t rx_int;
 extern uint8_t RX_Int,TX_Int;
 extern void qe_touch_main(void);
@@ -200,15 +201,15 @@ static void r_Config_SCI12_callback_transmitend(void)
 static void r_Config_SCI12_callback_receiveend(void)
 {
     /* Start user code for r_Config_SCI12_callback_receiveend. Do not edit comment generated here */
-	RX_BUFFER[Rx_count++]= SCI12.RDR; //RX_Buffer has your main data bytes.
+	Rx_Buffer[Rx_count++]= SCI12.RDR; //RX_Buffer has your main data bytes.
 							if(Rx_count==8)
 								{
-								memcpy(Rx_Buffer, RX_BUFFER, sizeof(RX_BUFFER));
-								memset(RX_BUFFER,0,sizeof(RX_BUFFER));
+
 								Rx_count=0;
 
+
 								}
-							R_Config_CMT0_Start();
+
 							R_Config_SCI12_Serial_Receive(&RX_Byte,1 );
     /* End user code. Do not edit comment generated here */
 }

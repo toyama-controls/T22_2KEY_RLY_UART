@@ -38,10 +38,10 @@
       <Rectangle>
                         
         
-        <X>235</X>
+        <X>35</X>
                         
         
-        <Y>105</Y>
+        <Y>25</Y>
                         
         
         <Width>50</Width>
@@ -95,10 +95,10 @@
       <Rectangle>
                         
         
-        <X>445</X>
+        <X>115</X>
                         
         
-        <Y>110</Y>
+        <Y>30</Y>
                         
         
         <Width>50</Width>
@@ -173,28 +173,28 @@
       <MethodID>0</MethodID>
       <TouchIFID>0</TouchIFID>
       <TouchIFType>1</TouchIFType>
-      <Capacitance>18.87925</Capacitance>
+      <Capacitance>19.914274</Capacitance>
       <DrivePulseFrequency>2.0</DrivePulseFrequency>
-      <Threshold>703</Threshold>
-      <Hysteresis>35</Hysteresis>
+      <Threshold>1003</Threshold>
+      <Hysteresis>50</Hysteresis>
       <ScanTime>0.526</ScanTime>
       <CTSUSSDIV>1</CTSUSSDIV>
       <CTSUSNUM>3</CTSUSNUM>
-      <CTSUSO>247</CTSUSO>
+      <CTSUSO>238</CTSUSO>
       <CTSUSDPA>7</CTSUSDPA>
     </TunedData>
     <TunedData>
       <MethodID>0</MethodID>
       <TouchIFID>1</TouchIFID>
       <TouchIFType>1</TouchIFType>
-      <Capacitance>16.249392</Capacitance>
+      <Capacitance>16.839058</Capacitance>
       <DrivePulseFrequency>2.0</DrivePulseFrequency>
-      <Threshold>738</Threshold>
-      <Hysteresis>36</Hysteresis>
+      <Threshold>850</Threshold>
+      <Hysteresis>42</Hysteresis>
       <ScanTime>0.526</ScanTime>
       <CTSUSSDIV>1</CTSUSSDIV>
       <CTSUSNUM>3</CTSUSNUM>
-      <CTSUSO>196</CTSUSO>
+      <CTSUSO>177</CTSUSO>
       <CTSUSDPA>7</CTSUSDPA>
     </TunedData>
     <Vcc>3.3</Vcc>
